@@ -148,7 +148,7 @@ footer a:hover {
   color: var(--text-dark);
 }
 
-.dark-mode-btn {
+.dark-mode-btn, .lang-btn {
   background: none;
   border: none;
   color: var(--text-light);
@@ -156,6 +156,14 @@ footer a:hover {
   cursor: pointer;
   padding: 0;
   margin: 0;
+}
+
+.lang-btn {
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 5px 10px;
+  border: 2px solid var(--primary);
+  border-radius: 5px;
 }
 
 .dark-mode-btn i {
