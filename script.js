@@ -1,6 +1,6 @@
 const translations = {
     eng: {
-        bio: "I am gabrielle (gabby/gabriella), STEM student, filipino-vietnamese in geneva, switzerland, interested in coding, environmental applications, and piano.",
+        bio: "I am gabrielle (gabby/gabriella) a student in geneva, switzerland, interested in coding, environmental applications, and piano.",
         awards: "some recent awards",
         repertoire: "some recent repertoire",
         projects: "some cool projects",
@@ -9,7 +9,7 @@ const translations = {
         copyright: "Built with love ⋆˙⟡♡"
     },
     fr: {
-        bio: "Je m'appelle gabrielle (gabby/gabriella), étudiante en STEM, philippino-vietnamienne à genève, suisse, intéressée par l'informatique, projets liés à l'environnement, et le piano.",
+        bio: "Je m'appelle gabrielle (gabby/gabriella) une étudiante à genève, suisse, intéressée par l'informatique, projets liés à l'environnement, et le piano.",
         awards: "quelques awards récentes",
         repertoire: "quelques répertoires récents",
         projects: "quelques projets cool",
