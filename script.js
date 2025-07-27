@@ -22,89 +22,47 @@ const translations = {
 let currentLanguage = 'eng';
 let isDarkMode = false;
 
-    function toggleLanguage() {
-        currentLanguage = currentLanguage === 'eng' ? 'fr' : 'eng';
-        
-        const elementsToTranslate = [
-            document.getElementById('bio-text'),
-            document.getElementById('awards-title'),
-            document.getElementById('repertoire-title'),
-            document.getElementById('projects-title'),
-            document.getElementById('notes-link'),
-            document.getElementById('footer-text'),
-            document.getElementById('summer-schools-title')
-        ];
-        
-        elementsToTranslate.forEach(element => {
-            if (element) {
-                element.classList.add('language-transition');
-            }
-        });
-        
-        setTimeout(() => {
-            const bioText = document.getElementById('bio-text');
-            const awardsTitle = document.getElementById('awards-title');
-            const repertoireTitle = document.getElementById('repertoire-title');
-            const projectsTitle = document.getElementById('projects-title');
-            const notesLink = document.getElementById('notes-link');
-            const footerText = document.getElementById('footer-text');
-            const summerSchoolsTitle = document.getElementById('summer-schools-title');
-            const langBtn = document.getElementById('lang-btn');
-            
-            if (bioText) bioText.textContent = translations[currentLanguage].bio;
-            if (awardsTitle) awardsTitle.textContent = translations[currentLanguage].awards;
-            if (repertoireTitle) repertoireTitle.textContent = translations[currentLanguage].repertoire;
-            if (projectsTitle) projectsTitle.textContent = translations[currentLanguage].projects;
-            if (notesLink) notesLink.textContent = translations[currentLanguage].notes;
-            if (footerText) footerText.textContent = `© 2025 gabriellengrvc. ${translations[currentLanguage].copyright}`;
-            if (summerSchoolsTitle) summerSchoolsTitle.textContent = translations[currentLanguage].summerSchools;
-            if (langBtn) langBtn.textContent = currentLanguage === 'fr' ? 'ENG' : 'FR';
-            
-            document.documentElement.setAttribute('lang', currentLanguage);
-            
-            elementsToTranslate.forEach(element => {
-                if (element) {
-                    element.classList.remove('language-transition');
-                }
-            });
-        }, 200);
-    }
+function toggleLanguage() {
+    currentLanguage = currentLanguage === 'eng' ? 'fr' : 'eng';
+    
+    const bioText = document.getElementById('bio-text');
+    const awardsTitle = document.getElementById('awards-title');
+    const repertoireTitle = document.getElementById('repertoire-title');
+    const projectsTitle = document.getElementById('projects-title');
+    const notesLink = document.getElementById('notes-link');
+    const footerText = document.getElementById('footer-text');
+    const summerSchoolsTitle = document.getElementById('summer-schools-title');
+    const langBtn = document.getElementById('lang-btn');
+    
+    if (bioText) bioText.textContent = translations[currentLanguage].bio;
+    if (awardsTitle) awardsTitle.textContent = translations[currentLanguage].awards;
+    if (repertoireTitle) repertoireTitle.textContent = translations[currentLanguage].repertoire;
+    if (projectsTitle) projectsTitle.textContent = translations[currentLanguage].projects;
+    if (notesLink) notesLink.textContent = translations[currentLanguage].notes;
+    if (footerText) footerText.textContent = `© 2025 gabriellengrvc. ${translations[currentLanguage].copyright}`;
+    if (summerSchoolsTitle) summerSchoolsTitle.textContent = translations[currentLanguage].summerSchools;
+    if (langBtn) langBtn.textContent = currentLanguage === 'fr' ? 'ENG' : 'FR';
+    
+    document.documentElement.setAttribute('lang', currentLanguage);
+}
 
-    function toggleDarkMode() {
-        isDarkMode = !isDarkMode;
-        const body = document.body;
-        const sunIcon = document.getElementById('sun-icon');
-        const moonIcon = document.getElementById('moon-icon');
-        
-        if (isDarkMode) {
-            body.classList.add('dark-mode');
-            if (sunIcon) sunIcon.style.display = 'none';
-            if (moonIcon) moonIcon.style.display = 'inline-block';
-        } else {
-            body.classList.remove('dark-mode');
-            if (moonIcon) moonIcon.style.display = 'none';
-            if (sunIcon) sunIcon.style.display = 'inline-block';
-        }
+function toggleDarkMode() {
+    isDarkMode = !isDarkMode;
+    const body = document.body;
+    const sunIcon = document.getElementById('sun-icon');
+    const moonIcon = document.getElementById('moon-icon');
+    
+    if (isDarkMode) {
+        body.classList.add('dark-mode');
+        if (sunIcon) sunIcon.style.display = 'none';
+        if (moonIcon) moonIcon.style.display = 'inline-block';
+    } else {
+        body.classList.remove('dark-mode');
+        if (moonIcon) moonIcon.style.display = 'none';
+        if (sunIcon) sunIcon.style.display = 'inline-block';
     }
-
-    document.addEventListener('DOMContentLoaded', function() {
-        const links = document.querySelectorAll('a[href^="#"]');
-        links.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    });
+}
 
 window.addEventListener('load', function() {
-document.body.classList.add('loaded');
+    document.body.classList.add('loaded');
 });
