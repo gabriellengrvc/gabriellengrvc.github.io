@@ -21,6 +21,11 @@ const translations = {
     }
 };
 
+let preferences = {
+    language: 'eng',
+    darkMode: false
+};
+
 document.addEventListener('DOMContentLoaded', function() {
     initializeAnimations();
     initializeIntersectionObserver();
@@ -28,13 +33,11 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function loadSavedPreferences() {
-    const savedLang = localStorage.getItem('preferred-language') || 'eng';
-    if (savedLang !== 'eng') {
-        document.documentElement.setAttribute('lang', savedLang);
-        applyLanguage(savedLang);
+    if (preferences.language !== 'eng') {
+        document.documentElement.setAttribute('lang', preferences.language);
+        applyLanguage(preferences.language);
     }
-    const savedDarkMode = localStorage.getItem('dark-mode') === 'true';
-    if (savedDarkMode) {
+    if (preferences.darkMode) {
         document.body.classList.add('dark-mode');
         updateDarkModeUI(true);
     }
@@ -118,13 +121,16 @@ function toggleLanguage() {
     const currentLang = document.documentElement.getAttribute('lang') === 'fr' ? 'eng' : 'fr';
     document.documentElement.setAttribute('lang', currentLang);
     
-    localStorage.setItem('preferred-language', currentLang);
+    preferences.language = currentLang;
     
     const elementsToTranslate = document.querySelectorAll('#bio p:first-child, #awards h2, #repertoire h2, #projects h2, .nav-links a[href="./notes.html"], footer p');
     
     elementsToTranslate.forEach(element => {
-        element.style.opacity = '0.5';
-        element.style.transform = 'translateY(-5px)';
+        if (element) {
+            element.style.opacity = '0.5';
+            element.style.transform = 'translateY(-5px)';
+            element.style.transition = 'all 0.3s ease';
+        }
     });
     
     setTimeout(() => {
@@ -146,7 +152,7 @@ function toggleDarkMode() {
     
     body.classList.toggle('dark-mode');
     
-    localStorage.setItem('dark-mode', isDarkMode.toString());
+    preferences.darkMode = isDarkMode;
     
     updateDarkModeUI(isDarkMode);
     
