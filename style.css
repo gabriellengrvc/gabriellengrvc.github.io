@@ -71,36 +71,6 @@ a {
     }
 }
 
-/* Staggered animation delays */
-section:nth-child(1) h2 { animation-delay: 0.1s; }
-section:nth-child(1) p { animation-delay: 0.2s; }
-section:nth-child(2) h2 { animation-delay: 0.3s; }
-section:nth-child(2) p { animation-delay: 0.4s; }
-section:nth-child(3) h2 { animation-delay: 0.5s; }
-section:nth-child(3) p, section:nth-child(3) ul { animation-delay: 0.6s; }
-
-ul {
-    opacity: 0;
-    transform: translateY(15px);
-    animation: fadeInUp 0.6s ease forwards;
-}
-
-li {
-    opacity: 0;
-    transform: translateX(-20px);
-    animation: slideInFromLeft 0.5s ease forwards;
-}
-
-li:nth-child(1) { animation-delay: 0.1s; }
-li:nth-child(2) { animation-delay: 0.2s; }
-li:nth-child(3) { animation-delay: 0.3s; }
-li:nth-child(4) { animation-delay: 0.4s; }
-li:nth-child(5) { animation-delay: 0.5s; }
-li:nth-child(6) { animation-delay: 0.6s; }
-li:nth-child(7) { animation-delay: 0.7s; }
-li:nth-child(8) { animation-delay: 0.8s; }
-li:nth-child(9) { animation-delay: 0.9s; }
-
 /* NAV BAR */
 .nav {
     position: static;
