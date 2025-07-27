@@ -164,7 +164,6 @@ footer {
     font-size: 0.9rem;
     color: var(--text-light);
     margin-top: auto;
-    border-top: 1px solid rgba(156, 164, 90, 0.2);
     opacity: 0;
     animation: fadeIn 1s ease forwards;
     animation-delay: 1.2s;
@@ -192,7 +191,6 @@ footer a:hover {
 
 .dark-mode footer {
     color: var(--text-dark);
-    border-top: 1px solid rgba(156, 164, 90, 0.3);
 }
 
 .dark-mode-btn, .lang-btn {
