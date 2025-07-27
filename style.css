@@ -132,6 +132,13 @@ h1 {
     height: auto;
 }
 
+.globe-container {
+  transform: scale(0.5);
+  transform-origin: top center;
+  margin: 0 auto;
+  width: fit-content;
+}
+
 /* FOOTER */
 footer {
     position: relative;
