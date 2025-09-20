@@ -1,6 +1,6 @@
 const translations = {
         eng: {
-            bio: "I am gabrielle a student in geneva, switzerland, interested in coding, environmental applications, and piano.",
+            bio: "I am gabrielle a student in geneva, switzerland, interested in coding, science, sustainability, and piano.",
             awards: "some recent awards",
             repertoire: "some recent repertoire",
             projects: "some cool projects",
@@ -8,7 +8,7 @@ const translations = {
             summerSchools: "summer schools"
         },
         fr: {
-            bio: "Je m'appelle gabrielle une étudiante à genève, suisse, intéressée par l'informatique, projets liés à l'environnement, et le piano.",
+            bio: "Je m'appelle gabrielle une étudiante à genève, suisse, intéressée par l'informatique, les sciences, la durabilité, et le piano.",
             awards: "quelques prix récentes",
             repertoire: "quelques morceaux récents",
             projects: "quelques projets cool",
