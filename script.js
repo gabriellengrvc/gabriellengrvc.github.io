@@ -1,65 +1,44 @@
-const translations = {
-        eng: {
-            bio: "I am gabrielle a student in geneva, switzerland, interested in coding, science, sustainability, and piano.",
-            awards: "some recent awards",
-            repertoire: "some recent repertoire",
-            projects: "some cool projects",
-            copyright: "Built with love ⋆˙⟡♡",
-            summerSchools: "summer schools"
-        },
-        fr: {
-            bio: "Je m'appelle gabrielle une étudiante à genève, suisse, intéressée par l'informatique, les sciences, la durabilité, et le piano.",
-            awards: "quelques prix récentes",
-            repertoire: "quelques morceaux récents",
-            projects: "quelques projets cool",
-            copyright: "Construite avec amour ⋆˙⟡♡",
-            summerSchools: "écoles d'été"
-        }
-    };
+let lang = 'en';
+const btn = document.getElementById('langBtn');
 
-let currentLanguage = 'eng';
-let isDarkMode = false;
+btn.addEventListener('click', () => {
+  lang = lang === 'en' ? 'fr' : 'en';
+  btn.textContent = lang === 'en' ? 'FR' : 'EN';
+  document.documentElement.lang = lang;
 
-function toggleLanguage() {
-    currentLanguage = currentLanguage === 'eng' ? 'fr' : 'eng';
-    
-    const bioText = document.getElementById('bio-text');
-    const awardsTitle = document.getElementById('awards-title');
-    const repertoireTitle = document.getElementById('repertoire-title');
-    const projectsTitle = document.getElementById('projects-title');
-    const footerText = document.getElementById('footer-text');
-    const summerSchoolsTitle = document.getElementById('summer-schools-title');
-    const langBtn = document.getElementById('lang-btn');
-    
-    if (bioText) bioText.textContent = translations[currentLanguage].bio;
-    if (awardsTitle) awardsTitle.textContent = translations[currentLanguage].awards;
-    if (repertoireTitle) repertoireTitle.textContent = translations[currentLanguage].repertoire;
-    if (projectsTitle) projectsTitle.textContent = translations[currentLanguage].projects;
-    if (footerText) footerText.textContent = `© 2025 gabriellengrvc. ${translations[currentLanguage].copyright}`;
-    if (summerSchoolsTitle) summerSchoolsTitle.textContent = translations[currentLanguage].summerSchools;
-    if (langBtn) langBtn.textContent = currentLanguage === 'fr' ? 'ENG' : 'FR';
-    
-    document.documentElement.setAttribute('lang', currentLanguage);
-}
-
-function toggleDarkMode() {
-    isDarkMode = !isDarkMode;
-    const body = document.body;
-    const sunIcon = document.getElementById('sun-icon');
-    const moonIcon = document.getElementById('moon-icon');
-    
-    if (isDarkMode) {
-        body.classList.add('dark-mode');
-        if (sunIcon) sunIcon.style.display = 'none';
-        if (moonIcon) moonIcon.style.display = 'inline-block';
-    } else {
-        body.classList.remove('dark-mode');
-        if (moonIcon) moonIcon.style.display = 'none';
-        if (sunIcon) sunIcon.style.display = 'inline-block';
+  document.querySelectorAll('[data-en]').forEach(el => {
+    const text = el.getAttribute('data-' + lang);
+    if (text) {
+      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+        el.placeholder = text;
+      } else {
+        el.textContent = text;
+      }
     }
-}
-
-window.addEventListener('load', function() {
-    document.body.classList.add('loaded');
+  });
 });
 
+// ─── NAV SCROLL ───
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// ─── INTERSECTION OBSERVER ───
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const siblings = [...el.parentElement.children];
+      const idx = siblings.indexOf(el);
+      setTimeout(() => {
+        el.classList.add('visible');
+      }, idx * 80);
+      observer.unobserve(el);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll(
+  '.exp-item, .project-card, .rep-item, .award-item, .gallery-item'
+).forEach(el => observer.observe(el));
