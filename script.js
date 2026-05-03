@@ -6,7 +6,7 @@ function toggleExtra() {
   const isOpen = list.classList.toggle('open');
   btn.classList.toggle('open', isOpen);
  
-  const enText = isOpen ? 'Hide earlier experience' : 'Show earlier experience';
+  const enText = isOpen ? 'Hide more experience' : 'Show more experience';
   const frText = isOpen ? 'Masquer l\'expérience antérieure' : 'Voir l\'expérience antérieure';
   label.setAttribute('data-en', enText);
   label.setAttribute('data-fr', frText);
